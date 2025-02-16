@@ -1,0 +1,30 @@
+name: robocop analysis 
+on:
+  push:
+    branches:
+      - "*"
+jobs:
+  robocop-check:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install Dependencies
+        run: |
+          pip install robotframework-robocop
+
+      - name: Run Robocop
+        run: robocop test.robot
+
+      - name: Upload Robocop Report (Optional)
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: robocop-report
+          path: robocop.log

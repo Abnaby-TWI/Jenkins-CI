@@ -24,7 +24,7 @@ jobs:
 
       - name: Run Robocop
         run: |
-          robocop . 2>&1 | tee output.txt  # Scan all .robot files, capture output
+          robocop . | tee output.txt  # Scan all .robot files, capture output
 
       - name: Upload Robocop Report (Optional)
         if: always()

@@ -1,11 +1,14 @@
-name: robocop analysis 
+name: Robocop Analysis
+
 on:
   push:
     branches:
-      - "*"
+      - "**"  # Triggers on all branches, including feature branches
+
 jobs:
   robocop-check:
     runs-on: ubuntu-22.04
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -20,7 +23,8 @@ jobs:
           pip install robotframework-robocop
 
       - name: Run Robocop
-        run: robocop test.robot > output.txt
+        run: |
+          robocop . 2>&1 | tee output.txt  # Scan all .robot files, capture output
 
       - name: Upload Robocop Report (Optional)
         if: always()

@@ -5,6 +5,7 @@ on:
     branches:
       - "**"  # Triggers on all branches, including feature branches
       - "manual"
+  workflow_dispatch:
 
 jobs:
   robocop-check:

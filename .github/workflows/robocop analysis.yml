@@ -7,9 +7,9 @@ on:
       - "manual"
   workflow_dispatch:
 
-jobs:
+jobs:    
   robocop-check:
-    runs-on: ubuntu-22.04
+    runs-on: self-hosted
 
     steps:
       - name: Checkout Repository

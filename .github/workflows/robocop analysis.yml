@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - "**"  # Triggers on all branches, including feature branches
+      - "manual"
 
 jobs:
   robocop-check:
